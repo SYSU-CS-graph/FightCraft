@@ -1,4 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://btrg7ttai34jq"]
+[gd_scene load_steps=10 format=3 uid="uid://btrg7ttai34jq"]
+
+[ext_resource type="Texture2D" uid="uid://clkj4kphhlbsv" path="res://terrain.png" id="1_eg7ic"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y0qmo"]
 
@@ -9,10 +11,25 @@ noise = SubResource("FastNoiseLite_y0qmo")
 [sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_j40ki"]
 resource_name = "air"
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6hxhp"]
+resource_name = "dirt"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_eg7ic")
+texture_filter = 0
+
 [sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_ap3ym"]
+material_override_0 = SubResource("StandardMaterial3D_6hxhp")
+tile_left = Vector2i(1, 0)
+tile_right = Vector2i(1, 0)
+tile_bottom = Vector2i(1, 0)
+tile_top = Vector2i(1, 0)
+tile_back = Vector2i(1, 0)
+tile_front = Vector2i(1, 0)
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_av4r8"]
 
 [sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_gksx8"]
-models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_j40ki"), SubResource("VoxelBlockyModelCube_ap3ym")])
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_j40ki"), SubResource("VoxelBlockyModelCube_ap3ym"), SubResource("VoxelBlockyModelCube_av4r8")])
 
 [sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_3rv0d"]
 library = SubResource("VoxelBlockyLibrary_gksx8")
@@ -26,6 +43,7 @@ mesher = SubResource("VoxelMesherBlocky_3rv0d")
 [node name="VoxelViewer" type="VoxelViewer" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.394183, 0.919032, 0, -0.919032, 0.394183, 0, 150.603, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.780136, 0.62561, 0, -0.62561, 0.780136, 0, 84.4914, 0)
