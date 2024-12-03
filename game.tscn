@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://btrg7ttai34jq"]
+[gd_scene load_steps=11 format=3 uid="uid://btrg7ttai34jq"]
 
 [ext_resource type="Texture2D" uid="uid://clkj4kphhlbsv" path="res://terrain.png" id="1_eg7ic"]
 [ext_resource type="VoxelGeneratorScript" uid="uid://ccos8n5gpt2gr" path="res://Mygenerator.tres" id="1_jun77"]
+[ext_resource type="PackedScene" uid="uid://bpx68joj5k60q" path="res://character.tscn" id="3_nbmy1"]
 
 [sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_j40ki"]
 resource_name = "air"
@@ -44,12 +45,11 @@ library = SubResource("VoxelBlockyLibrary_gksx8")
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 generator = ExtResource("1_jun77")
 mesher = SubResource("VoxelMesherBlocky_3rv0d")
-
-[node name="VoxelViewer" type="VoxelViewer" parent="."]
+run_stream_in_editor = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.394183, 0.919032, 0, -0.919032, 0.394183, 0, 150.603, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.780136, 0.62561, 0, -0.62561, 0.780136, 0, 13.5346, 0)
-fov = 78.75
+[node name="Character" parent="." instance=ExtResource("3_nbmy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
+_terrain_path = NodePath("../VoxelTerrain")
