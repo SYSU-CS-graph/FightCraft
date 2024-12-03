@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://btrg7ttai34jq"]
+[gd_scene load_steps=11 format=3 uid="uid://btrg7ttai34jq"]
 
 [ext_resource type="Texture2D" uid="uid://clkj4kphhlbsv" path="res://terrain.png" id="1_eg7ic"]
 
@@ -26,7 +26,17 @@ tile_top = Vector2i(1, 0)
 tile_back = Vector2i(1, 0)
 tile_front = Vector2i(1, 0)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gq3v"]
+albedo_texture = ExtResource("1_eg7ic")
+
 [sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_av4r8"]
+resource_name = "grass"
+material_override_0 = SubResource("StandardMaterial3D_4gq3v")
+tile_left = Vector2i(0, 1)
+tile_right = Vector2i(0, 1)
+tile_bottom = Vector2i(1, 0)
+tile_back = Vector2i(0, 1)
+tile_front = Vector2i(0, 1)
 
 [sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_gksx8"]
 models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_j40ki"), SubResource("VoxelBlockyModelCube_ap3ym"), SubResource("VoxelBlockyModelCube_av4r8")])
