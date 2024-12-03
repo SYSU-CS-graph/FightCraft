@@ -1,12 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://btrg7ttai34jq"]
+[gd_scene load_steps=10 format=3 uid="uid://btrg7ttai34jq"]
 
 [ext_resource type="Texture2D" uid="uid://clkj4kphhlbsv" path="res://terrain.png" id="1_eg7ic"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_y0qmo"]
-
-[sub_resource type="VoxelGeneratorNoise2D" id="VoxelGeneratorNoise2D_82u75"]
-channel = 0
-noise = SubResource("FastNoiseLite_y0qmo")
+[ext_resource type="VoxelGeneratorScript" uid="uid://ccos8n5gpt2gr" path="res://Mygenerator.tres" id="1_jun77"]
 
 [sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_j40ki"]
 resource_name = "air"
@@ -47,7 +42,7 @@ library = SubResource("VoxelBlockyLibrary_gksx8")
 [node name="Node" type="Node"]
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
-generator = SubResource("VoxelGeneratorNoise2D_82u75")
+generator = ExtResource("1_jun77")
 mesher = SubResource("VoxelMesherBlocky_3rv0d")
 
 [node name="VoxelViewer" type="VoxelViewer" parent="."]
@@ -56,5 +51,5 @@ mesher = SubResource("VoxelMesherBlocky_3rv0d")
 transform = Transform3D(1, 0, 0, 0, 0.394183, 0.919032, 0, -0.919032, 0.394183, 0, 150.603, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.780136, 0.62561, 0, -0.62561, 0.780136, 0, 84.4914, 0)
+transform = Transform3D(1, 0, 0, 0, 0.780136, 0.62561, 0, -0.62561, 0.780136, 0, 13.5346, 0)
 fov = 78.75
