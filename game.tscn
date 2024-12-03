@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://btrg7ttai34jq"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y0qmo"]
+
+[sub_resource type="VoxelGeneratorNoise2D" id="VoxelGeneratorNoise2D_82u75"]
+channel = 0
+noise = SubResource("FastNoiseLite_y0qmo")
+
+[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_j40ki"]
+resource_name = "air"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_ap3ym"]
+
+[sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_gksx8"]
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_j40ki"), SubResource("VoxelBlockyModelCube_ap3ym")])
+
+[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_3rv0d"]
+library = SubResource("VoxelBlockyLibrary_gksx8")
+
+[node name="Node" type="Node"]
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+generator = SubResource("VoxelGeneratorNoise2D_82u75")
+mesher = SubResource("VoxelMesherBlocky_3rv0d")
+
+[node name="VoxelViewer" type="VoxelViewer" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.780136, 0.62561, 0, -0.62561, 0.780136, 0, 84.4914, 0)
+fov = 78.75
