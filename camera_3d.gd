@@ -1,6 +1,6 @@
 extends Camera3D
 
-@export var _sensitive = 0.004
+@export var _sensitive = 0.003
 @export var _max_angle = 1.57
 @export var _min_angle = -1.57
 

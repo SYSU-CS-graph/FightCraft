@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b350658m5hlxu"]
+
+[ext_resource type="Script" path="res://资源场景/平地/自然平台.gd" id="1_ksb5p"]
+
+[node name="自然平台" type="Node3D"]
+script = ExtResource("1_ksb5p")

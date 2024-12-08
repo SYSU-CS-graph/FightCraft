@@ -1,20 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpx68joj5k60q"]
+[gd_scene load_steps=8 format=3 uid="uid://bpx68joj5k60q"]
 
 [ext_resource type="Script" path="res://character.gd" id="1_0l7ev"]
 [ext_resource type="Script" path="res://camera_3d.gd" id="2_g4xvm"]
+[ext_resource type="PackedScene" uid="uid://dn6d1recfcy7l" path="res://资源场景/方块/方块_no_collision.tscn" id="3_7cdyp"]
+[ext_resource type="Texture2D" uid="uid://cunc7tumkxuwm" path="res://资源场景/装备/宝剑2.png" id="4_n28ea"]
+[ext_resource type="PackedScene" uid="uid://gulwh502wdaf" path="res://全局设置/global.tscn" id="5_n764d"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_lhbhg"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_omxmr"]
+friction = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yel8f"]
 size = Vector3(0.8, 1.8, 0.8)
 
-[node name="Character" type="Node3D"]
+[node name="Character" type="RigidBody3D"]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_omxmr")
+gravity_scale = 0.0
 script = ExtResource("1_0l7ev")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+current = true
+far = 500.0
 script = ExtResource("2_g4xvm")
-_sensitive = 0.003
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_lhbhg")
+[node name="手持" type="Node3D" parent="Camera3D"]
+transform = Transform3D(0.549901, 0.163264, 0.819117, 0.271212, 0.892663, -0.359997, -0.78997, 0.420117, 0.446597, 0.799, -0.435, -0.79)
 
-[node name="VoxelViewer" type="VoxelViewer" parent="."]
+[node name="方块" parent="Camera3D/手持" instance=ExtResource("3_7cdyp")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
+
+[node name="宝剑" type="Sprite3D" parent="Camera3D/手持"]
+transform = Transform3D(-0.08726, 0.179585, 0.15045, -0.233985, -0.0587963, -0.0655279, -0.0116877, -0.163684, 0.188603, -0.119169, 0.139034, -0.225504)
+texture = ExtResource("4_n28ea")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_yel8f")
+
+[node name="Global" parent="." instance=ExtResource("5_n764d")]
