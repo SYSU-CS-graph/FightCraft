@@ -2,6 +2,9 @@ extends Node3D
 
 var base_position = Vector3(0, 0, 0)					# 基地址
 var hash_node = { }									# 用于使用方块的hash
+var hash_node_tree = { }								# 用于使用树的hash
+var hash_node_cow = { }								# 用于使用牛的hash
+var hash_node_long = { }								# 用于使用龙的hash
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,6 +12,10 @@ func _ready() -> void:
 	layer_init()
 	# 随机生成点东西
 	random_init()
+	# 生成树
+	make_tree()
+	# 生成牛
+	make_cow()
 
 func layer_init():									# 初始化平台
 	# 地基
@@ -22,6 +29,62 @@ func layer_init():									# 初始化平台
 			each_node.position = base_position + Vector3(i - 50, 0, j - 50)
 			# 添加到hash中便于使用
 			hash_node[Vector3(i - 50, 0, j - 50)] = each_node
+
+func make_tree():									# 随机产生一些树
+	# 产生随机坐标
+	var pos_list = []
+	for i in range(50):
+		var temp_pos = Vector3(randi_range(-50, 50), 0, randi_range(-50, 50))
+		# 要求每颗树至少保持7格距离
+		var flag = true
+		for j in pos_list:
+			var dir = j - temp_pos
+			if dir.length() < 7:
+				flag = false
+				break
+		if flag:
+			pos_list.append(temp_pos)
+	# 生成树
+	for i in pos_list:
+		# 创建树
+		var each_node = preload("res://资源场景/3D资源/树/树.tscn").instantiate()
+		# 添加到当前场景中
+		add_child(each_node)
+		# 设置位置
+		each_node.position = i
+		# 随机角度
+		each_node.rotation = Vector3(0, randf_range(-PI, PI), 0)
+		# 添加到dict中
+		hash_node_tree[i] = each_node
+
+func make_cow():									# 随机产生一些树
+	# 产生随机坐标
+	var pos_list = []
+	for i in range(10):
+		var temp_pos = Vector3(randi_range(-50, 50), 5, randi_range(-50, 50))
+		# 要求每头牛至少保持5格距离
+		var flag = true
+		for j in pos_list:
+			var dir = j - temp_pos
+			if dir.length() < 5:
+				flag = false
+				break
+		if flag:
+			pos_list.append(temp_pos)
+	# 生成牛
+	for i in pos_list:
+		# 创建树
+		var each_node = preload("res://资源场景/3D资源/牛/牛.tscn").instantiate()
+		# 添加到当前场景中
+		add_child(each_node)
+		# 设置位置
+		each_node.position = i
+		# 随机角度
+		each_node.rotation = Vector3(0, randf_range(-PI, PI), 0)
+		# 添加到dict中
+		hash_node_cow[i] = each_node
+
+func make_global_ball():								# 产生完整球体，为了加载速度正常不生成，靠手动生成
 	# 球体的其他面
 	var side_base_position = [Vector3(-50, 0, -50), Vector3(-50, 0, 50), Vector3(50, 0, -50), Vector3(-50, 0, -50), Vector3(0, -100, 0)]
 	var rotation_list = [Vector3(- PI / 2, 0, 0), Vector3(PI / 2, 0, 0), Vector3(0, 0, - PI / 2), Vector3(0, 0, PI / 2), Vector3(0, PI, 0)]
@@ -59,12 +122,39 @@ func random_init():									# 随机化平台
 			# 设定一个随机数
 			var i = randi_range(-50, 50)
 			var j = randi_range(-50, 50)
-			var k = randi_range(1, 20)
+			var k = randi_range(10, 30)
 			# 设定该方块的位置
 			each_node.position = Vector3(i, k, j)
+			# 随机角度
+			each_node.rotation = Vector3(randf_range(-PI / 2, PI / 2), randf_range(-PI, PI), randf_range(-PI / 2, PI / 2))
 			# 添加到hash中便于使用
 			hash_node[Vector3(i, k, j)] = each_node
 
+func summon_dragon():								# 召唤龙
+	if Input.is_key_pressed(KEY_N) and Input.is_key_pressed(KEY_L):
+		# 创建龙
+		var each_node = preload("res://资源场景/3D资源/龙/1/龙1.tscn").instantiate()
+		# 添加到当前场景中
+		add_child(each_node)
+		# 设定该方块的位置
+		each_node.position = Vector3(0, 10, 0)
+		# 随机角度
+		each_node.rotation = Vector3(randf_range(-PI / 2, PI / 2), randf_range(-PI, PI), randf_range(-PI / 2, PI / 2))
+		# 添加到hash中便于使用
+		hash_node_long[len(hash_node_long)] = each_node
+	if Input.is_key_pressed(KEY_N) and Input.is_key_pressed(KEY_M):
+		# 创建龙
+		var each_node = preload("res://资源场景/3D资源/龙/2/龙2.tscn").instantiate()
+		# 添加到当前场景中
+		add_child(each_node)
+		# 设定该方块的位置
+		each_node.position = Vector3(0, 10, 0)
+		# 随机角度
+		each_node.rotation = Vector3(randf_range(-PI / 2, PI / 2), randf_range(-PI, PI), randf_range(-PI / 2, PI / 2))
+		# 添加到hash中便于使用
+		hash_node_long[len(hash_node_long)] = each_node
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	# 可能召唤的输入判定
+	summon_dragon()

@@ -21,7 +21,7 @@ gravity_scale = 0.0
 script = ExtResource("1_0l7ev")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 current = true
 far = 500.0
 script = ExtResource("2_g4xvm")
@@ -37,7 +37,7 @@ visible = false
 transform = Transform3D(-0.08726, 0.179585, 0.15045, -0.233985, -0.0587963, -0.0655279, -0.0116877, -0.163684, 0.188603, -0.119169, 0.139034, -0.225504)
 texture = ExtResource("4_n28ea")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="碰撞体积1" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_yel8f")
 
 [node name="Global" parent="." instance=ExtResource("5_n764d")]
