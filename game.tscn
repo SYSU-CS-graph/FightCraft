@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://btrg7ttai34jq"]
+[gd_scene load_steps=9 format=3 uid="uid://btrg7ttai34jq"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_8gp42"]
 [ext_resource type="PackedScene" uid="uid://bpx68joj5k60q" path="res://character.tscn" id="3_nbmy1"]
-[ext_resource type="Texture2D" uid="uid://b5x1ddxqadaon" path="res://资源场景/天空/星空.jpg" id="4_l8vsu"]
+[ext_resource type="Texture2D" uid="uid://duc5tsdxkrh1m" path="res://资源场景/天空/星空2.jpg" id="4_kdg66"]
 [ext_resource type="PackedScene" uid="uid://b350658m5hlxu" path="res://资源场景/平地/自然平台.tscn" id="4_u7xdb"]
+[ext_resource type="PackedScene" uid="uid://fs3kuavmmy8p" path="res://资源场景/3D资源/木星/木星1.tscn" id="5_306pp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_83fwg"]
-panorama = ExtResource("4_l8vsu")
+panorama = ExtResource("4_kdg66")
 
 [sub_resource type="Sky" id="Sky_v2yh0"]
 sky_material = SubResource("PanoramaSkyMaterial_83fwg")
@@ -55,3 +56,6 @@ vertical_alignment = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_33u6v")
+
+[node name="木星1" parent="." instance=ExtResource("5_306pp")]
+mass = 999.0

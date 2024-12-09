@@ -60,7 +60,6 @@ func make_grass():									# 生成草
 					each_node.position = pos
 					hash_node_grass[pos] = each_node
 	
-
 func make_tree():									# 随机产生一些树
 	# 产生随机坐标
 	var pos_list = []
