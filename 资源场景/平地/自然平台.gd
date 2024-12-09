@@ -5,6 +5,7 @@ var hash_node = { }									# 用于使用方块的hash
 var hash_node_tree = { }								# 用于使用树的hash
 var hash_node_cow = { }								# 用于使用牛的hash
 var hash_node_long = { }								# 用于使用龙的hash
+var hash_node_grass = { }							# 用于使用草的hash
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +17,8 @@ func _ready() -> void:
 	make_tree()
 	# 生成牛
 	make_cow()
+	# 生成草
+	make_grass()
 
 func layer_init():									# 初始化平台
 	# 地基
@@ -29,6 +32,34 @@ func layer_init():									# 初始化平台
 			each_node.position = base_position + Vector3(i - 50, 0, j - 50)
 			# 添加到hash中便于使用
 			hash_node[Vector3(i - 50, 0, j - 50)] = each_node
+
+func make_grass():									# 生成草
+	# 产生随机坐标
+	var pos_list = []
+	for i in range(50):
+		var temp_pos = Vector3(randi_range(-50, 50), 0.5, randi_range(-50, 50))
+		var flag = true
+		for j in pos_list:
+			var dir = j - temp_pos
+			if dir.length() < 3:
+				flag = false
+				break
+		if flag:
+			pos_list.append(temp_pos)
+	# 生成草
+	for i in pos_list:
+		# 在周围3×3的范围内随机生成草，这样做的目的是让草的生成倾向于集中
+		for j in range(-1, 2):
+			for k in range(-1, 2):
+				if randi_range(0,100) < 30: # 生成概率30%
+					var pos = i
+					pos.x+=j
+					pos.z+=k
+					var each_node = preload("res://资源场景/3D资源/草/grass.tscn").instantiate()
+					add_child(each_node)
+					each_node.position = pos
+					hash_node_grass[pos] = each_node
+	
 
 func make_tree():									# 随机产生一些树
 	# 产生随机坐标
