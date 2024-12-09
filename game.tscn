@@ -1,14 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://btrg7ttai34jq"]
+[gd_scene load_steps=8 format=3 uid="uid://btrg7ttai34jq"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_8gp42"]
 [ext_resource type="PackedScene" uid="uid://bpx68joj5k60q" path="res://character.tscn" id="3_nbmy1"]
+[ext_resource type="Texture2D" uid="uid://b5x1ddxqadaon" path="res://资源场景/天空/星空.jpg" id="4_l8vsu"]
 [ext_resource type="PackedScene" uid="uid://b350658m5hlxu" path="res://资源场景/平地/自然平台.tscn" id="4_u7xdb"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_83fwg"]
+panorama = ExtResource("4_l8vsu")
+
+[sub_resource type="Sky" id="Sky_v2yh0"]
+sky_material = SubResource("PanoramaSkyMaterial_83fwg")
+
+[sub_resource type="Environment" id="Environment_33u6v"]
+background_mode = 2
+sky = SubResource("Sky_v2yh0")
 
 [node name="总场景" type="Node"]
 script = ExtResource("1_8gp42")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.394183, 0.919032, 0, -0.919032, 0.394183, 0, 150.603, 0)
+shadow_enabled = true
 
 [node name="Character" parent="." instance=ExtResource("3_nbmy1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
@@ -40,3 +52,6 @@ grow_vertical = 2
 text = "+"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_33u6v")

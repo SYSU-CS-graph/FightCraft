@@ -17,8 +17,8 @@ func _ready() -> void:
 	make_tree()
 	# 生成牛
 	make_cow()
-	# 生成草
-	make_grass()
+	# 生成草(消耗GPU资源，平时开发可不生成草)
+	#make_grass()
 
 func layer_init():									# 初始化平台
 	# 地基
