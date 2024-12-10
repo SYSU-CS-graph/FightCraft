@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://btrg7ttai34jq"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_8gp42"]
-[ext_resource type="Script" path="res://资源场景/点光源/点光源.gd" id="2_jjoev"]
+[ext_resource type="PackedScene" uid="uid://dver18u2qo658" path="res://资源场景/点光源/太阳光源.tscn" id="2_11i86"]
 [ext_resource type="PackedScene" uid="uid://bpx68joj5k60q" path="res://character.tscn" id="3_nbmy1"]
 [ext_resource type="Texture2D" uid="uid://duc5tsdxkrh1m" path="res://资源场景/天空/星空2.jpg" id="4_kdg66"]
 [ext_resource type="PackedScene" uid="uid://b350658m5hlxu" path="res://资源场景/平地/自然平台.tscn" id="4_u7xdb"]
@@ -22,13 +22,7 @@ sky = SubResource("Sky_v2yh0")
 [node name="总场景" type="Node"]
 script = ExtResource("1_8gp42")
 
-[node name="点光源" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.394183, 0.919032, 0, -0.919032, 0.394183, 0, 230, 0)
-light_energy = 300.0
-light_indirect_energy = 300.0
-shadow_enabled = true
-omni_range = 600.0
-script = ExtResource("2_jjoev")
+[node name="太阳光源" parent="." instance=ExtResource("2_11i86")]
 
 [node name="Character" parent="." instance=ExtResource("3_nbmy1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
