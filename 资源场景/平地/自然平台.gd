@@ -6,11 +6,14 @@ var hash_node_tree = { }								# 用于使用树的hash
 var hash_node_cow = { }								# 用于使用牛的hash
 var hash_node_long = { }								# 用于使用龙的hash
 var hash_node_grass = { }							# 用于使用草的hash
+var hash_node_pool = { }								# 用于池塘边缘方块的hash
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# 生成平台
 	layer_init()
+	# 生成水
+	water_init()
 	# 随机生成点东西
 	random_init()
 	# 生成树
@@ -24,6 +27,8 @@ func layer_init():									# 初始化平台
 	# 地基
 	for i in range(101):
 		for j in range(101):
+			if 40<=i and i<=46 and 40<=j and j<=46:
+				continue
 			# 创建地基方块
 			var each_node = preload("res://资源场景/方块/方块_base.tscn").instantiate()
 			# 添加到当前场景中
@@ -32,6 +37,34 @@ func layer_init():									# 初始化平台
 			each_node.position = base_position + Vector3(i - 50, 0, j - 50)
 			# 添加到hash中便于使用
 			hash_node[Vector3(i - 50, 0, j - 50)] = each_node
+
+func water_init():									# 生成池塘
+	# 生成水
+	var water_node = preload("res://资源场景/水/水.tscn").instantiate()
+	add_child(water_node)
+	water_node.position = base_position + Vector3(-7, -0.8 ,-7)
+	# 生成池塘边缘
+	var depth = 2 # 池塘深度
+	for i in range(40, 47):
+		for j in range(40, 47):
+			# 竖直边缘
+			if i == 40 or i == 46 or j == 40 or j == 46:
+				for k in range(depth): # y坐标
+					var each_node = preload("res://资源场景/方块/方块.tscn").instantiate()
+					add_child(each_node)
+					each_node.position = base_position + Vector3(i - 50, -k, j - 50)
+					hash_node_pool[Vector3(i - 50, -k, j - 50)] = each_node
+			# 池底
+			var each_node = preload("res://资源场景/方块/方块.tscn").instantiate()
+			add_child(each_node)
+			each_node.position = base_position + Vector3(i - 50, -depth, j - 50)
+			hash_node_pool[Vector3(i - 50, -depth, j - 50)] = each_node
+func is_in_pool(pos:Vector3): # 判断坐标是否在池塘内，避免池塘内随机生成物体（除了小动物）
+	var x = pos.x
+	var z = pos.z
+	return x>=40-50 and x<=46-50 and z>=40-50 and z<=46-50
+	
+	
 
 func make_grass():									# 生成草
 	# 产生随机坐标
@@ -42,6 +75,9 @@ func make_grass():									# 生成草
 		for j in pos_list:
 			var dir = j - temp_pos
 			if dir.length() < 3:
+				flag = false
+				break
+			if is_in_pool(temp_pos): # 避免在池塘内生成
 				flag = false
 				break
 		if flag:
@@ -72,6 +108,8 @@ func make_tree():									# 随机产生一些树
 			if dir.length() < 7:
 				flag = false
 				break
+		if is_in_pool(temp_pos): # 避免在池塘内生成
+			flag = false
 		if flag:
 			pos_list.append(temp_pos)
 	# 生成树
