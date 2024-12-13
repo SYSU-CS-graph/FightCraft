@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bpx68joj5k60q" path="res://character.tscn" id="3_nbmy1"]
 [ext_resource type="PackedScene" uid="uid://b350658m5hlxu" path="res://资源场景/平地/自然平台.tscn" id="4_u7xdb"]
 [ext_resource type="PackedScene" uid="uid://fs3kuavmmy8p" path="res://资源场景/3D资源/木星/木星1.tscn" id="5_306pp"]
-[ext_resource type="PackedScene" uid="uid://bgtqt400u4j6g" path="res://资源场景/天空/天空盒.tscn" id="7_mhed7"]
+[ext_resource type="PackedScene" uid="uid://cv0qv4vjgimoy" path="res://资源场景/旧天空/旧天空.tscn" id="5_be60u"]
 
 [node name="总场景" type="Node"]
 script = ExtResource("1_8gp42")
@@ -43,4 +43,4 @@ vertical_alignment = 1
 [node name="木星1" parent="." instance=ExtResource("5_306pp")]
 mass = 999.0
 
-[node name="天空盒" parent="." instance=ExtResource("7_mhed7")]
+[node name="旧天空" parent="." instance=ExtResource("5_be60u")]

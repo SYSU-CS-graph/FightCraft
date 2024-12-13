@@ -4,3 +4,4 @@
 
 [node name="天空盒" type="Node3D"]
 script = ExtResource("1_8s5un")
+switch_freq = 30.0
