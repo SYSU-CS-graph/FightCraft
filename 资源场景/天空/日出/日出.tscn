@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmgctnsqivxff"]
+
+[ext_resource type="Texture2D" uid="uid://cpup15y0p6puy" path="res://资源场景/天空/日出/wasteland_clouds_puresky_4k.exr" id="1_ik7i7"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kcuay"]
+panorama = ExtResource("1_ik7i7")
+
+[sub_resource type="Sky" id="Sky_lbepo"]
+sky_material = SubResource("PanoramaSkyMaterial_kcuay")
+
+[sub_resource type="Environment" id="Environment_lgcuk"]
+background_mode = 2
+background_energy_multiplier = 0.1
+sky = SubResource("Sky_lbepo")
+
+[node name="日出" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lgcuk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.814336, 0.177453, -0.552601, -0.0208603, 0.960447, 0.277682, 0.580019, -0.214599, 0.785828, 0, 300, 0)

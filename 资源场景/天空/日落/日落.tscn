@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://q1uud10jwxce"]
+
+[ext_resource type="Texture2D" uid="uid://b07oc50seypcd" path="res://资源场景/天空/日落/belfast_sunset_puresky_4k.exr" id="1_3hds8"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sk5kp"]
+panorama = ExtResource("1_3hds8")
+
+[sub_resource type="Sky" id="Sky_teyxv"]
+sky_material = SubResource("PanoramaSkyMaterial_sk5kp")
+
+[sub_resource type="Environment" id="Environment_ywsf5"]
+background_mode = 2
+background_energy_multiplier = 0.1
+sky = SubResource("Sky_teyxv")
+sky_rotation = Vector3(3.14159, 0, 3.14159)
+
+[node name="日落" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ywsf5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.760404, -0.327202, 0.561004, 0.145278, 0.756227, 0.637978, -0.632993, 0.566622, -0.527503, 0, 300, 0)

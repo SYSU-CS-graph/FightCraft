@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgtqt400u4j6g"]
+
+[ext_resource type="Script" path="res://资源场景/天空/天空盒.gd" id="1_8s5un"]
+
+[node name="天空盒" type="Node3D"]
+script = ExtResource("1_8s5un")

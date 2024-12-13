@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfayk7kdvhqek"]
+
+[ext_resource type="Texture2D" uid="uid://duc5tsdxkrh1m" path="res://资源场景/天空/黑夜/星空.jpg" id="1_m7xtl"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6ylon"]
+panorama = ExtResource("1_m7xtl")
+
+[sub_resource type="Sky" id="Sky_papka"]
+sky_material = SubResource("PanoramaSkyMaterial_6ylon")
+
+[sub_resource type="Environment" id="Environment_8qhfq"]
+background_mode = 2
+background_energy_multiplier = 5.0
+sky = SubResource("Sky_papka")
+
+[node name="黑夜" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8qhfq")

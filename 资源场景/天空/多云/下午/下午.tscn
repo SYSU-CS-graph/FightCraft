@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcf8lq37sbtit"]
+
+[ext_resource type="Texture2D" uid="uid://c0afmblntvty" path="res://资源场景/天空/多云/sunflowers_puresky_4k.exr" id="1_cqf1c"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4vx53"]
+panorama = ExtResource("1_cqf1c")
+
+[sub_resource type="Sky" id="Sky_1mexi"]
+sky_material = SubResource("PanoramaSkyMaterial_4vx53")
+
+[sub_resource type="Environment" id="Environment_p2y42"]
+background_mode = 2
+background_energy_multiplier = 0.7
+sky = SubResource("Sky_1mexi")
+sky_rotation = Vector3(3.14159, 0, 3.14159)
+
+[node name="多云" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p2y42")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.610642, -0.698517, 0.373084, -0.247673, 0.615945, 0.747844, -0.75218, 0.364263, -0.549125, 0, 300, 0)

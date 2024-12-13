@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://cv0qv4vjgimoy"]
+
+[ext_resource type="PackedScene" uid="uid://cb57flgnupbid" path="res://资源场景/3D资源/太阳/太阳.tscn" id="1_yg6tr"]
+[ext_resource type="PackedScene" uid="uid://dver18u2qo658" path="res://资源场景/旧天空/点光源/太阳光源.tscn" id="2_b3syd"]
+[ext_resource type="Texture2D" uid="uid://d2mtxyanqi1w4" path="res://资源场景/旧天空/星空.jpg" id="3_qllxu"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_x1ru8"]
+panorama = ExtResource("3_qllxu")
+
+[sub_resource type="Sky" id="Sky_lsg6d"]
+sky_material = SubResource("PanoramaSkyMaterial_x1ru8")
+
+[sub_resource type="Environment" id="Environment_xwbrt"]
+background_mode = 2
+background_energy_multiplier = 4.0
+sky = SubResource("Sky_lsg6d")
+
+[node name="旧天空" type="Node3D"]
+
+[node name="太阳" parent="." instance=ExtResource("1_yg6tr")]
+
+[node name="太阳光源" parent="." instance=ExtResource("2_b3syd")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xwbrt")

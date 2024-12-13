@@ -1,28 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://btrg7ttai34jq"]
+[gd_scene load_steps=6 format=3 uid="uid://btrg7ttai34jq"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_8gp42"]
-[ext_resource type="PackedScene" uid="uid://dver18u2qo658" path="res://资源场景/点光源/太阳光源.tscn" id="2_11i86"]
 [ext_resource type="PackedScene" uid="uid://bpx68joj5k60q" path="res://character.tscn" id="3_nbmy1"]
 [ext_resource type="PackedScene" uid="uid://b350658m5hlxu" path="res://资源场景/平地/自然平台.tscn" id="4_u7xdb"]
 [ext_resource type="PackedScene" uid="uid://fs3kuavmmy8p" path="res://资源场景/3D资源/木星/木星1.tscn" id="5_306pp"]
-[ext_resource type="Texture2D" uid="uid://dwiih7jipjllm" path="res://资源场景/天空/白天1.jpeg" id="5_v46tl"]
-[ext_resource type="PackedScene" uid="uid://cb57flgnupbid" path="res://资源场景/3D资源/太阳/太阳.tscn" id="7_6w482"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_83fwg"]
-panorama = ExtResource("5_v46tl")
-
-[sub_resource type="Sky" id="Sky_v2yh0"]
-sky_material = SubResource("PanoramaSkyMaterial_83fwg")
-
-[sub_resource type="Environment" id="Environment_33u6v"]
-background_mode = 2
-background_energy_multiplier = 0.75
-sky = SubResource("Sky_v2yh0")
+[ext_resource type="PackedScene" uid="uid://bgtqt400u4j6g" path="res://资源场景/天空/天空盒.tscn" id="7_mhed7"]
 
 [node name="总场景" type="Node"]
 script = ExtResource("1_8gp42")
-
-[node name="太阳光源" parent="." instance=ExtResource("2_11i86")]
 
 [node name="Character" parent="." instance=ExtResource("3_nbmy1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
@@ -55,10 +40,7 @@ text = "+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="天空盒" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_33u6v")
-
 [node name="木星1" parent="." instance=ExtResource("5_306pp")]
 mass = 999.0
 
-[node name="太阳" parent="." instance=ExtResource("7_6w482")]
+[node name="天空盒" parent="." instance=ExtResource("7_mhed7")]
