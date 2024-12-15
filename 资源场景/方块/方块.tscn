@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://opqpwslx3wyk"]
+[gd_scene load_steps=8 format=3 uid="uid://opqpwslx3wyk"]
 
 [ext_resource type="Texture2D" uid="uid://cy0slsp7jlbtw" path="res://资源场景/方块纹理/1_top.png" id="1_2bjpl"]
 [ext_resource type="Texture2D" uid="uid://cf0tjvmdkoyiy" path="res://资源场景/方块纹理/1_side.png" id="2_3q87o"]
@@ -9,6 +9,13 @@ friction = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_seca6"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhohs"]
+albedo_texture = ExtResource("1_2bjpl")
+uv1_scale = Vector3(2.985, 2.985, 2.985)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cahkh"]
+material = SubResource("StandardMaterial3D_nhohs")
+
 [node name="方块" type="StaticBody3D"]
 physics_material_override = SubResource("PhysicsMaterial_wfhks")
 
@@ -17,24 +24,33 @@ shape = SubResource("BoxShape3D_seca6")
 
 [node name="top" type="Sprite3D" parent="."]
 transform = Transform3D(1.57, 0, 0, 0, -6.86269e-08, -1.57, 0, 1.57, -6.86269e-08, 0, 0.5, 0)
+visible = false
 texture = ExtResource("1_2bjpl")
 
 [node name="side1" type="Sprite3D" parent="."]
 transform = Transform3D(1.57, 0, 0, 0, 1.57, 0, 0, 0, 1.57, 0, 0, -0.5)
+visible = false
 texture = ExtResource("2_3q87o")
 
 [node name="side2" type="Sprite3D" parent="."]
 transform = Transform3D(-6.86269e-08, 0, 1.57, 0, 1.57, 0, -1.57, 0, -6.86269e-08, 0.5, 0, 0)
+visible = false
 texture = ExtResource("2_3q87o")
 
 [node name="side3" type="Sprite3D" parent="."]
 transform = Transform3D(1.57, 0, 0, 0, 1.57, 0, 0, 0, 1.57, 0, 0, 0.5)
+visible = false
 texture = ExtResource("2_3q87o")
 
 [node name="side4" type="Sprite3D" parent="."]
 transform = Transform3D(-6.86269e-08, 0, 1.57, 0, 1.57, 0, -1.57, 0, -6.86269e-08, -0.5, 0, 0)
+visible = false
 texture = ExtResource("2_3q87o")
 
 [node name="button" type="Sprite3D" parent="."]
 transform = Transform3D(1.56, 0, 0, 0, -6.81898e-08, -1.56, 0, 1.56, -6.81898e-08, 0, -0.5, 0)
+visible = false
 texture = ExtResource("3_fxkiq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_cahkh")

@@ -15,7 +15,7 @@ func _ready() -> void:
 	# 生成水
 	water_init()
 	# 随机生成点东西
-	random_init()
+	#random_init()
 	# 生成树
 	make_tree()
 	# 生成牛
@@ -30,7 +30,7 @@ func layer_init():									# 初始化平台
 			if 40<=i and i<=46 and 40<=j and j<=46:
 				continue
 			# 创建地基方块
-			var each_node = preload("res://资源场景/方块/方块_base.tscn").instantiate()
+			var each_node = preload("res://资源场景/方块/方块.tscn").instantiate()
 			# 添加到当前场景中
 			add_child(each_node)
 			# 设定该方块的位置

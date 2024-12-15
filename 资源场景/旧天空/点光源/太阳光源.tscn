@@ -8,24 +8,27 @@
 
 [node name="前光源" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 230, 0)
-light_energy = 300.0
-light_indirect_energy = 300.0
+light_energy = 170.0
+light_indirect_energy = 170.0
 shadow_enabled = true
+shadow_blur = 3.0
 omni_range = 600.0
 script = ExtResource("1_k1exn")
 
 [node name="后左光源" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 460, 0)
-light_energy = 300.0
-light_indirect_energy = 300.0
+light_energy = 100.0
+light_indirect_energy = 100.0
 shadow_enabled = true
+shadow_blur = 3.0
 omni_range = 600.0
 script = ExtResource("2_a4b4o")
 
 [node name="后右光源" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 920, 0)
-light_energy = 300.0
-light_indirect_energy = 300.0
+light_energy = 100.0
+light_indirect_energy = 100.0
 shadow_enabled = true
+shadow_blur = 3.0
 omni_range = 600.0
 script = ExtResource("3_w4wqa")

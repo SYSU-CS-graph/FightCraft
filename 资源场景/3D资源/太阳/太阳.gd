@@ -1,7 +1,7 @@
 extends Node3D
 
 # 导出参数，可以在编辑器中调整
-@export var rotation_speed: float = 0.3     # 公转速度
+@export var rotation_speed: float = 0.3    # 公转速度
 @export var self_rotation_speed: float = 1.0 # 自转速度
 @export var orbit_radius: float = 280.0        # 公转半径
 
