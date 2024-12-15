@@ -8,8 +8,30 @@ var hash_node_long = { }								# 用于使用龙的hash
 var hash_node_grass = { }							# 用于使用草的hash
 var hash_node_pool = { }								# 用于池塘边缘方块的hash
 
+# 随即地形加载
+
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# 打乱地形生成
+	var my_arry = [1,2,3,0]
+	my_arry.shuffle()
+	var a1 = my_arry[0]
+	var a2 = my_arry[1]
+	var a3 = my_arry[2]
+	var a4 = my_arry[3]
+	print(a1,a2,a3,a4)
+	var new_array = [[-35,-35,35,30],[0,-35,30,20],[-35,0,30,25],[29,29,44,25]]
+	make_stone(new_array[a1][0],new_array[a1][1],new_array[a1][2],new_array[a1][3])	#位置x,位置z，生成大小size，生成最大高度max_height
+	make_stone(new_array[a2][0],new_array[a2][1],new_array[a2][2],new_array[a2][3])	
+	make_stone(new_array[a3][0],new_array[a3][1],new_array[a3][2],new_array[a3][3])	
+	# 生成树
+	var tree_height =randi()%8+1
+	make_tree_2(new_array[a4][0],new_array[a4][1],new_array[a4][2],tree_height)		#位置x,位置z，生成大小size，生成最大高度max_height
+	
+	
 	# 生成平台
 	layer_init()
 	#generate_sine_wave_terrain(4,7,10,5)		#位置x,位置z，生成大小size，生成最大高度max_height
@@ -18,20 +40,25 @@ func _ready() -> void:
 	#generate_sine_wave_terrain(16,21,15,8)
 	#generate_sine_wave_terrain(39,-19,15,5)
 	
-	
-	
-	make_stone(-35,-35,35,30)	#位置x,位置z，生成大小size，生成最大高度max_height
-	make_stone(0,-35,30,20)	#位置x,位置z，生成大小size，生成最大高度max_height
-	make_stone(-35,0,30,25)	#位置x,位置z，生成大小size，生成最大高度max_height
+	#随机地形加载
+
+	#make_stone(-35,-35,35,30)	#位置x,位置z，生成大小size，生成最大高度max_height
+	#make_stone(0,-35,30,20)	#位置x,位置z，生成大小size，生成最大高度max_height
+	#make_stone(-35,0,30,25)	#位置x,位置z，生成大小size，生成最大高度max_height
+	## 生成树
+	#make_tree_2(29,29,44,5)		#位置x,位置z，生成大小size，生成最大高度max_height
 	# 生成水
 	water_init()
+	
+	
+	
+	
+	
 	#river_init()
 	# 随机生成点东西
 	#random_init()
-	# 生成树
-	make_tree_2(29,29,44,5)		#位置x,位置z，生成大小size，生成最大高度max_height
 	make_sand(33,-20,36,54,7)	#位置x,位置z，生成大小x_size,z_size，生成最大高度max_height
-	make_sand(-35,30,30,35,7)
+	make_sand(-35,31,30,35,7)
 	# 生成牛
 	make_cow()
 	# 生成草(消耗GPU资源，平时开发可不生成草)
