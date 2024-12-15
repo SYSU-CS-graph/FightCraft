@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://gulwh502wdaf"]
+
+[ext_resource type="Script" path="res://全局设置/global.gd" id="1_qfh17"]
+
+[node name="Global" type="Node3D"]
+script = ExtResource("1_qfh17")

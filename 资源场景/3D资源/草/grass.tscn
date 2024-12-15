@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bndrnm45hp837"]
+
+[ext_resource type="PackedScene" uid="uid://dirghxafbchp3" path="res://资源场景/3D资源/草/grass.blend" id="1_ck5pe"]
+
+[node name="grass" instance=ExtResource("1_ck5pe")]
+
+[node name="Node_1" parent="." index="0"]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)

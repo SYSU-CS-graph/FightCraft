@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb57flgnupbid"]
+
+[ext_resource type="Script" path="res://资源场景/3D资源/太阳/太阳.gd" id="1_mr1uc"]
+[ext_resource type="ArrayMesh" uid="uid://easvk4i57m2c" path="res://资源场景/3D资源/太阳/sun.res" id="2_bprwy"]
+
+[node name="太阳" type="Node3D"]
+script = ExtResource("1_mr1uc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 0, 0)
+mesh = ExtResource("2_bprwy")

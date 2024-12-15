@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cg1e8rh7h5ib3"]
+
+[ext_resource type="Texture2D" uid="uid://dlb2yudcbncew" path="res://资源场景/方块纹理/256256/TCom_Rock_CliffCoastal4_header(2).jpg" id="1_j8pi6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1tav"]
+albedo_texture = ExtResource("1_j8pi6")
+metallic = 0.82
+roughness = 0.31
+
+[sub_resource type="BoxMesh" id="BoxMesh_1mfix"]
+material = SubResource("StandardMaterial3D_q1tav")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wc78a"]
+
+[node name="石头方块" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_1mfix")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_wc78a")

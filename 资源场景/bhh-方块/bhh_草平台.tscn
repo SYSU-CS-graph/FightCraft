@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dy1qlrrjefau2"]
+
+[ext_resource type="Texture2D" uid="uid://mkxbe0rym8dw" path="res://资源场景/方块纹理/256256/TCom_GrassMedium2_header(1).jpg" id="1_flhnx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjshr"]
+albedo_texture = ExtResource("1_flhnx")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1prc3"]
+material = SubResource("StandardMaterial3D_kjshr")
+size = Vector2(1, 1)
+center_offset = Vector3(0, 0.5, 0)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3xb32"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4w3ld"]
+
+[node name="bhh-草平台" type="MeshInstance3D"]
+mesh = SubResource("PlaneMesh_1prc3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00251118)
+physics_material_override = SubResource("PhysicsMaterial_3xb32")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000203616, 0)
+shape = SubResource("BoxShape3D_4w3ld")

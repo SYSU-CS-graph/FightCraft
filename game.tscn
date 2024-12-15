@@ -1,55 +1,111 @@
-[gd_scene load_steps=11 format=3 uid="uid://btrg7ttai34jq"]
+[gd_scene load_steps=17 format=3 uid="uid://btrg7ttai34jq"]
 
-[ext_resource type="Texture2D" uid="uid://clkj4kphhlbsv" path="res://terrain.png" id="1_eg7ic"]
-[ext_resource type="VoxelGeneratorScript" uid="uid://ccos8n5gpt2gr" path="res://Mygenerator.tres" id="1_jun77"]
-[ext_resource type="PackedScene" uid="uid://bpx68joj5k60q" path="res://character.tscn" id="3_nbmy1"]
+[ext_resource type="Script" path="res://game.gd" id="1_8gp42"]
+[ext_resource type="Script" path="res://character.gd" id="2_okg3y"]
+[ext_resource type="Script" path="res://camera_3d.gd" id="3_8ke1v"]
+[ext_resource type="PackedScene" uid="uid://dn6d1recfcy7l" path="res://资源场景/方块/方块_no_collision.tscn" id="4_t2ncw"]
+[ext_resource type="Texture2D" uid="uid://cunc7tumkxuwm" path="res://资源场景/装备/宝剑2.png" id="5_kwdm2"]
+[ext_resource type="PackedScene" uid="uid://gulwh502wdaf" path="res://全局设置/global.tscn" id="6_1tbwl"]
+[ext_resource type="Texture2D" uid="uid://b67a4e66obqlx" path="res://资源场景/bighaohao水/Shaders/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="7_ojgoc"]
+[ext_resource type="Texture2D" uid="uid://b7v57smsxojg0" path="res://资源场景/方块纹理/256256/bcc8515c8a8b756222b972f27b5541d(2).png" id="8_btuer"]
+[ext_resource type="Script" path="res://资源场景/bhh-平台/bhh_自然平台.gd" id="8_ufp6v"]
 
-[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_j40ki"]
-resource_name = "air"
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_omxmr"]
+friction = 0.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6hxhp"]
-resource_name = "dirt"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_eg7ic")
-texture_filter = 0
+[sub_resource type="BoxShape3D" id="BoxShape3D_yel8f"]
+size = Vector3(0.8, 1.8, 0.8)
 
-[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_ap3ym"]
-material_override_0 = SubResource("StandardMaterial3D_6hxhp")
-tile_left = Vector2i(1, 0)
-tile_right = Vector2i(1, 0)
-tile_bottom = Vector2i(1, 0)
-tile_top = Vector2i(1, 0)
-tile_back = Vector2i(1, 0)
-tile_front = Vector2i(1, 0)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kqhak"]
+panorama = ExtResource("7_ojgoc")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gq3v"]
-albedo_texture = ExtResource("1_eg7ic")
+[sub_resource type="Sky" id="Sky_2p17s"]
+sky_material = SubResource("PanoramaSkyMaterial_kqhak")
 
-[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_av4r8"]
-resource_name = "grass"
-material_override_0 = SubResource("StandardMaterial3D_4gq3v")
-tile_left = Vector2i(0, 1)
-tile_right = Vector2i(0, 1)
-tile_bottom = Vector2i(1, 0)
-tile_back = Vector2i(0, 1)
-tile_front = Vector2i(0, 1)
+[sub_resource type="Environment" id="Environment_fur6y"]
+background_mode = 2
+sky = SubResource("Sky_2p17s")
+ambient_light_source = 3
+reflected_light_source = 2
+volumetric_fog_density = 0.0
 
-[sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_gksx8"]
-models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_j40ki"), SubResource("VoxelBlockyModelCube_ap3ym"), SubResource("VoxelBlockyModelCube_av4r8")])
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sndas"]
+albedo_color = Color(1, 1, 1, 0.890196)
+albedo_texture = ExtResource("8_btuer")
 
-[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_3rv0d"]
-library = SubResource("VoxelBlockyLibrary_gksx8")
+[sub_resource type="SphereMesh" id="SphereMesh_3qs2o"]
+material = SubResource("StandardMaterial3D_sndas")
 
-[node name="Node" type="Node"]
-
-[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
-generator = ExtResource("1_jun77")
-mesher = SubResource("VoxelMesherBlocky_3rv0d")
-run_stream_in_editor = false
+[node name="总场景" type="Node"]
+script = ExtResource("1_8gp42")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.394183, 0.919032, 0, -0.919032, 0.394183, 0, 150.603, 0)
+transform = Transform3D(0.590377, 0.790487, 0.163051, -0.752302, 0.465746, 0.465963, 0.292397, -0.397758, 0.869651, 0, 6.02359, 0)
+shadow_enabled = true
 
-[node name="Character" parent="." instance=ExtResource("3_nbmy1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
-_terrain_path = NodePath("../VoxelTerrain")
+[node name="Character" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_omxmr")
+gravity_scale = 0.0
+script = ExtResource("2_okg3y")
+
+[node name="Camera3D" type="Camera3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+current = true
+far = 500.0
+script = ExtResource("3_8ke1v")
+
+[node name="手持" type="Node3D" parent="Character/Camera3D"]
+transform = Transform3D(0.549901, 0.163264, 0.819117, 0.271212, 0.892663, -0.359997, -0.78997, 0.420117, 0.446597, 0.799, -0.435, -0.79)
+
+[node name="方块" parent="Character/Camera3D/手持" instance=ExtResource("4_t2ncw")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
+
+[node name="宝剑" type="Sprite3D" parent="Character/Camera3D/手持"]
+transform = Transform3D(-0.08726, 0.179585, 0.15045, -0.233985, -0.0587963, -0.0655279, -0.0116877, -0.163684, 0.188603, -0.119169, 0.139034, -0.225504)
+texture = ExtResource("5_kwdm2")
+
+[node name="碰撞体积1" type="CollisionShape3D" parent="Character"]
+shape = SubResource("BoxShape3D_yel8f")
+
+[node name="Global" parent="Character" instance=ExtResource("6_1tbwl")]
+
+[node name="Debug参数" type="Label" parent="."]
+offset_left = 21.0
+offset_top = 23.0
+offset_right = 310.0
+offset_bottom = 166.0
+theme_override_font_sizes/font_size = 20
+text = "Debug参数
+"
+vertical_alignment = 1
+
+[node name="准心" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fur6y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.99998, -0.00735616, -0.00541772, 0.00734006, 1.99998, -0.00593829, 0.0054395, 0.00591835, 1.99998, -6, -0.5, -6)
+mesh = SubResource("SphereMesh_3qs2o")
+
+[node name="bhh-自然平台" type="Node3D" parent="."]
+script = ExtResource("8_ufp6v")

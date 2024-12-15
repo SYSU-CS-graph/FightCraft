@@ -1,0 +1,100 @@
+[gd_scene load_steps=17 format=3 uid="uid://c2cn81exi4yqx"]
+
+[ext_resource type="Shader" path="res://资源场景/bighaohao水/Shaders/Terrain.gdshader" id="1_italc"]
+[ext_resource type="Shader" path="res://资源场景/bighaohao水/Shaders/Water.gdshader" id="3_7n2j5"]
+[ext_resource type="PackedScene" uid="uid://b35mxcc3d74di" path="res://资源场景/bighaohao水/Scenes/WaterPlane.tscn" id="3_bpj5f"]
+[ext_resource type="Texture2D" uid="uid://b67a4e66obqlx" path="res://资源场景/bighaohao水/Shaders/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="3_y2d7a"]
+[ext_resource type="Texture2D" uid="uid://gq8n64t6y4go" path="res://资源场景/bighaohao水/Shaders/WaterPlaneNormal.tres" id="4_ayd52"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_bnxbg"]
+size = Vector2(20, 20)
+subdivide_width = 200
+subdivide_depth = 200
+orientation = 1
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_aaygo"]
+seed = 38
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ey57i"]
+seamless = true
+noise = SubResource("FastNoiseLite_aaygo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4a22"]
+render_priority = 0
+shader = ExtResource("1_italc")
+shader_parameter/albedo = Color(0, 0.584314, 0, 1)
+shader_parameter/noise_scale = 50.0
+shader_parameter/height_scale = 2.429
+shader_parameter/noise = SubResource("NoiseTexture2D_ey57i")
+
+[sub_resource type="SphereMesh" id="SphereMesh_cusnu"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_k7sfj"]
+panorama = ExtResource("3_y2d7a")
+
+[sub_resource type="Sky" id="Sky_vsmmt"]
+sky_material = SubResource("PanoramaSkyMaterial_k7sfj")
+
+[sub_resource type="Environment" id="Environment_a76v2"]
+background_mode = 2
+sky = SubResource("Sky_vsmmt")
+ambient_light_source = 3
+reflected_light_source = 2
+volumetric_fog_density = 0.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_aggf3"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qniod"]
+seamless = true
+noise = SubResource("FastNoiseLite_aggf3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2jpp"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_7n2j5")
+shader_parameter/albedo = Color(0, 0.321569, 0.431373, 1)
+shader_parameter/albedo2 = Color(0, 0.47451, 0.764706, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.02
+shader_parameter/wave_direction = Vector2(0, 1)
+shader_parameter/wave_direction2 = Vector2(0, 1)
+shader_parameter/time_scale = 0.025
+shader_parameter/noise_scale = 10.0
+shader_parameter/height_scale = 0.3
+shader_parameter/color_deep = Color(0.105882, 0.294118, 0.329412, 1)
+shader_parameter/color_shallow = Color(0, 0.552941, 0.65098, 1)
+shader_parameter/beers_law = 2.0
+shader_parameter/depth_offset = -0.75
+shader_parameter/edge_scale = 0.0
+shader_parameter/near = 1.0
+shader_parameter/far = 100.0
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+shader_parameter/wave = SubResource("NoiseTexture2D_qniod")
+shader_parameter/texture_normal = ExtResource("4_ayd52")
+shader_parameter/texture_normal2 = ExtResource("4_ayd52")
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(0.999997, 0.00183603, 0.00135851, -0.00183804, 0.999997, 0.00148084, -0.0013558, -0.00148333, 0.999998, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.943025, -0.00307868, -0.332709, -0.00406404, 0.999989, 0.00226579, 0.332699, 0.00348884, -0.943027, -5.72553, 0.958037, -1.96375)
+
+[node name="Terrain" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 6.13909e-12, 2.32831e-10, -2.03954e-10, 1, 0, 0, 0, 1, 0.00143895, -1.28867, -0.0011593)
+mesh = SubResource("QuadMesh_bnxbg")
+skeleton = NodePath("../DirectionalLight3D")
+surface_material_override/0 = SubResource("ShaderMaterial_q4a22")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 3.81607e-05, -2.44179e-05, -2.66023e-05, 0.93082, 0.365478, 3.66836e-05, -0.365478, 0.93082, -2.55382, 3.50696, 1.39698e-09)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999989, -0.00367808, -0.00270886, 0.00367003, 0.999988, -0.00296914, 0.00271975, 0.00295917, 0.999994, -4.72242, 0.00948976, 0.00272798)
+mesh = SubResource("SphereMesh_cusnu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_a76v2")
+
+[node name="Water" parent="." instance=ExtResource("3_bpj5f")]
+surface_material_override/0 = SubResource("ShaderMaterial_b2jpp")

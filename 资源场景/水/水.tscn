@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://co8cap1echo7q"]
+
+[ext_resource type="Shader" path="res://资源场景/水/水.gdshader" id="1_afgp7"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_swot6"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ynonb"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_swot6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tpicd"]
+render_priority = 0
+shader = ExtResource("1_afgp7")
+shader_parameter/height_scale = 0.5
+shader_parameter/noise = SubResource("NoiseTexture2D_ynonb")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bh4wo"]
+material = SubResource("ShaderMaterial_tpicd")
+subdivide_width = 32
+subdivide_depth = 32
+
+[node name="水" type="Node3D"]
+transform = Transform3D(2.55, 0, 0, 0, 2.55, 0, 0, 0, 2.55, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(-0.798804, 0, 0.601592, 0, 1, 0, -0.601592, 0, -0.798804, 50, 1.3, -50)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 100.0
+omni_shadow_mode = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_bh4wo")

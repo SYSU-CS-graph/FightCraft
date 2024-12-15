@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dver18u2qo658"]
+
+[ext_resource type="Script" path="res://资源场景/点光源/前光源.gd" id="1_k1exn"]
+[ext_resource type="Script" path="res://资源场景/点光源/后左光源.gd" id="2_a4b4o"]
+[ext_resource type="Script" path="res://资源场景/点光源/后右光源.gd" id="3_w4wqa"]
+
+[node name="太阳光源" type="Node3D"]
+
+[node name="前光源" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 230, 0)
+light_energy = 300.0
+light_indirect_energy = 300.0
+shadow_enabled = true
+omni_range = 600.0
+script = ExtResource("1_k1exn")
+
+[node name="后左光源" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 460, 0)
+light_energy = 300.0
+light_indirect_energy = 300.0
+shadow_enabled = true
+omni_range = 600.0
+script = ExtResource("2_a4b4o")
+
+[node name="后右光源" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 920, 0)
+light_energy = 300.0
+light_indirect_energy = 300.0
+shadow_enabled = true
+omni_range = 600.0
+script = ExtResource("3_w4wqa")

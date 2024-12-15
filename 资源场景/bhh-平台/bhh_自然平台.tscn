@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuv8qtxsjjwuo"]
+
+[ext_resource type="Script" path="res://资源场景/bhh-平台/bhh_自然平台.gd" id="1_qoy6v"]
+
+[node name="bhh-自然平台" type="Node3D"]
+script = ExtResource("1_qoy6v")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://du68aiqylac7w"]
+
+[ext_resource type="Texture2D" uid="uid://b7v57smsxojg0" path="res://资源场景/方块纹理/256256/bcc8515c8a8b756222b972f27b5541d(2).png" id="1_6lwlo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1tav"]
+albedo_texture = ExtResource("1_6lwlo")
+roughness = 0.84
+
+[sub_resource type="BoxMesh" id="BoxMesh_1mfix"]
+material = SubResource("StandardMaterial3D_q1tav")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wc78a"]
+
+[node name="沙子方块" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_1mfix")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_wc78a")

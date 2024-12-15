@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv7rd6awtto48"]
+
+[ext_resource type="Texture2D" uid="uid://bnf2o75giv016" path="res://资源场景/方块纹理/1_button.png" id="1_k56dx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wfhks"]
+friction = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_seca6"]
+
+[node name="泥土方块" type="StaticBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_wfhks")
+
+[node name="碰撞体积" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_seca6")
+
+[node name="top" type="Sprite3D" parent="."]
+transform = Transform3D(1.57, 0, 0, 0, -6.86269e-08, -1.57, 0, 1.57, -6.86269e-08, 0, 0.5, 0)
+texture = ExtResource("1_k56dx")
+
+[node name="side1" type="Sprite3D" parent="."]
+transform = Transform3D(1.57, 0, 0, 0, 1.57, 0, 0, 0, 1.57, 0, 0, -0.5)
+texture = ExtResource("1_k56dx")
+
+[node name="side2" type="Sprite3D" parent="."]
+transform = Transform3D(-6.86269e-08, 0, 1.57, 0, 1.57, 0, -1.57, 0, -6.86269e-08, 0.5, 0, 0)
+texture = ExtResource("1_k56dx")
+
+[node name="side3" type="Sprite3D" parent="."]
+transform = Transform3D(1.57, 0, 0, 0, 1.57, 0, 0, 0, 1.57, 0, 0, 0.5)
+texture = ExtResource("1_k56dx")
+
+[node name="side4" type="Sprite3D" parent="."]
+transform = Transform3D(-6.86269e-08, 0, 1.57, 0, 1.57, 0, -1.57, 0, -6.86269e-08, -0.5, 0, 0)
+texture = ExtResource("1_k56dx")
+
+[node name="button" type="Sprite3D" parent="."]
+transform = Transform3D(1.56, 0, 0, 0, -6.81898e-08, -1.56, 0, 1.56, -6.81898e-08, 0, -0.5, 0)
+texture = ExtResource("1_k56dx")

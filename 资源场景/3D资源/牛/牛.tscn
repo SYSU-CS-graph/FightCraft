@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://chtutiqwynl5d"]
+
+[ext_resource type="Script" path="res://资源场景/3D资源/牛/牛.gd" id="1_ikn1n"]
+[ext_resource type="ArrayMesh" uid="uid://0gksfanauevq" path="res://资源场景/3D资源/牛/cow.res" id="1_onxiq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4n1sw"]
+radius = 0.7
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x0typ"]
+height = 1.6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_usk3o"]
+size = Vector3(1.7, 0.2, 1.5)
+
+[node name="牛" type="RigidBody3D"]
+script = ExtResource("1_ikn1n")
+
+[node name="Cow" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 1.42639, 0)
+mesh = ExtResource("1_onxiq")
+
+[node name="碰撞体积1" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.483336, 0.913869, 0)
+shape = SubResource("CapsuleShape3D_4n1sw")
+
+[node name="碰撞体积2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.733789, -0.679377, 0, 0.679377, 0.733789, 0, 0, 0, 1, 0.748571, 2.04503, 0)
+shape = SubResource("CapsuleShape3D_x0typ")
+
+[node name="碰撞体积3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55326, 0.0453332, 0)
+shape = SubResource("BoxShape3D_usk3o")
