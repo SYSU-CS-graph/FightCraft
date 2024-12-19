@@ -10,7 +10,13 @@
 
 FightCraft是使用[Godot游戏引擎](https://godotengine.org/)制作的大型开放世界冒险游戏。游戏部分场景取材于[Minecraft](https://www.minecraft.net/zh-hans) ，但提供了独具特色的场景和玩法。
 
+## 🔥下载游戏
 
+https://github.com/SYSU-CS-graph/FightCraft/releases/download/v1.0/FightCraft.exe
+
+## ✨演示视频
+
+**BiliBili:** https://www.bilibili.com/video/BV1D3kBYMECq
 
 ## 玩法说明
 
