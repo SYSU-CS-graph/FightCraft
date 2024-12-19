@@ -120,7 +120,7 @@ func f_jump():										# 跳跃的回调函数
 
 这里要给人物以**3**个旋转轴上的锁定，防止运动时人物开始“**滚动**”起来：
 
-<img src="README.assets\{DAE2E35A-3B49-424B-98F6-77A1B7851216}.png" alt="{DAE2E35A-3B49-424B-98F6-77A1B7851216}" style="zoom:25%;" />
+<img src="README.assets/{DAE2E35A-3B49-424B-98F6-77A1B7851216}.png" alt="{DAE2E35A-3B49-424B-98F6-77A1B7851216}" style="zoom:25%;" />
 
 ### 手持物品
 
@@ -132,7 +132,7 @@ func f_jump():										# 跳跃的回调函数
 
 |                             宝剑                             |                          草方块侧面                          |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="README.assets\{B174CF0E-5B83-415E-9983-CD982991ADB1}.png" alt="{B174CF0E-5B83-415E-9983-CD982991ADB1}" style="zoom:55%;" /> | <img src="README.assets\{113DFAD9-1115-4E52-B30C-2474E79B44E3}.png" alt="{113DFAD9-1115-4E52-B30C-2474E79B44E3}" style="zoom:50%;" /> |
+| <img src="README.assets/{B174CF0E-5B83-415E-9983-CD982991ADB1}.png" alt="{B174CF0E-5B83-415E-9983-CD982991ADB1}" style="zoom:55%;" /> | <img src="README.assets/{113DFAD9-1115-4E52-B30C-2474E79B44E3}.png" alt="{113DFAD9-1115-4E52-B30C-2474E79B44E3}" style="zoom:50%;" /> |
 
 #### 相对坐标系
 
@@ -140,7 +140,7 @@ func f_jump():										# 跳跃的回调函数
 
 正常情况下游戏循环在一颗场景树下，这就是全局位置的起点。
 
-<img src="README.assets\{7E8D67B4-82F0-44FB-B6B0-3252AB640CC3}.png" alt="{7E8D67B4-82F0-44FB-B6B0-3252AB640CC3}" style="zoom:33%;" />
+<img src="README.assets/{7E8D67B4-82F0-44FB-B6B0-3252AB640CC3}.png" alt="{7E8D67B4-82F0-44FB-B6B0-3252AB640CC3}" style="zoom:33%;" />
 
 这里再人物的子场景中添加手持物品，使用的是相对位置`position`，因为希望人物能拿着武器走。
 
@@ -152,11 +152,11 @@ func f_jump():										# 跳跃的回调函数
 
 |                            2D宝剑                            |                            石方块                            |                            3D宝剑                            |                            草方块                            |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![{E5D46D00-D3AD-4BB3-A9DA-9100C40A8A74}](README.assets\{E5D46D00-D3AD-4BB3-A9DA-9100C40A8A74}.png) | ![{465226B7-8DC7-4773-93C8-C5496653BCD4}](README.assets\{465226B7-8DC7-4773-93C8-C5496653BCD4}.png) | ![{D62F0789-6976-4DEB-82F3-75979A0CCEFA}](README.assets\{D62F0789-6976-4DEB-82F3-75979A0CCEFA}.png) | ![{26226873-4585-4408-A8E4-D20D5DFE7EAD}](README.assets\{26226873-4585-4408-A8E4-D20D5DFE7EAD}.png) |
+| ![{E5D46D00-D3AD-4BB3-A9DA-9100C40A8A74}](README.assets/{E5D46D00-D3AD-4BB3-A9DA-9100C40A8A74}.png) | ![{465226B7-8DC7-4773-93C8-C5496653BCD4}](README.assets/{465226B7-8DC7-4773-93C8-C5496653BCD4}.png) | ![{D62F0789-6976-4DEB-82F3-75979A0CCEFA}](README.assets/{D62F0789-6976-4DEB-82F3-75979A0CCEFA}.png) | ![{26226873-4585-4408-A8E4-D20D5DFE7EAD}](README.assets/{26226873-4585-4408-A8E4-D20D5DFE7EAD}.png) |
 
 > 仔细观看，3D宝剑上做了实体光效。有明显的光影效果：
 >
-> | ![{067B8BE2-1708-4651-817D-B07285472D9A}](README.assets\{067B8BE2-1708-4651-817D-B07285472D9A}.png) | ![image-20241219153044566](README.assets\image-20241219153044566.png) | ![image-20241219153046650](README.assets\image-20241219153046650.png) | ![{D62F0789-6976-4DEB-82F3-75979A0CCEFA}](README.assets\{D62F0789-6976-4DEB-82F3-75979A0CCEFA}.png) |
+> | ![{067B8BE2-1708-4651-817D-B07285472D9A}](README.assets/{067B8BE2-1708-4651-817D-B07285472D9A}.png) | ![image-20241219153044566](README.assets/image-20241219153044566.png) | ![image-20241219153046650](README.assets/image-20241219153046650.png) | ![{D62F0789-6976-4DEB-82F3-75979A0CCEFA}](README.assets/{D62F0789-6976-4DEB-82F3-75979A0CCEFA}.png) |
 > | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 
 其中，使用前两种手持物品有实现更多的功能，后面会展示。
@@ -229,7 +229,7 @@ if hand_have == 1 or hand_have == 3:
 
 这里面有比较复杂的状态转移逻辑，大致如下图所示：
 
-<img src="README.assets\{9C7B98CF-49B9-44D9-BA0E-8CD7F346F68A}.png" alt="{9C7B98CF-49B9-44D9-BA0E-8CD7F346F68A}" style="zoom:50%;" />
+<img src="README.assets/{9C7B98CF-49B9-44D9-BA0E-8CD7F346F68A}.png" alt="{9C7B98CF-49B9-44D9-BA0E-8CD7F346F68A}" style="zoom:50%;" />
 
 以下是会产生的情况：
 
@@ -264,7 +264,7 @@ if hand_have == 1 or hand_have == 3:
 
 |                            往左砍                            |                            往右砍                            |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![image-20241219195011239](README.assets\image-20241219195011239.png) | ![image-20241219195014181](README.assets\image-20241219195014181.png) |
+| ![image-20241219195011239](README.assets/image-20241219195011239.png) | ![image-20241219195014181](README.assets/image-20241219195014181.png) |
 
 #### 最帅的剑气
 
@@ -284,11 +284,11 @@ if hand_have == 1 or hand_have == 3:
 
 当按住右键时，以摄像头为起点向前一端距离会出现一根没有碰撞体积的红色的“**细圆柱**”，在圆柱的顶部是一把即将释放的“**虚拟宝剑**”：
 
-<img src="README.assets\{51748675-3063-424D-B7AE-EF38C22A564A}.png" alt="{51748675-3063-424D-B7AE-EF38C22A564A}" style="zoom:25%;" />
+<img src="README.assets/{51748675-3063-424D-B7AE-EF38C22A564A}.png" alt="{51748675-3063-424D-B7AE-EF38C22A564A}" style="zoom:25%;" />
 
 当松开右键时，在原先的“**虚拟宝剑**”处就会生成一把实体宝剑，向下坠落(轨迹会与之前的红色圆柱重合)，碰到地面后变大并击飞周围实体：
 
-| ![image-20241219200827350](README.assets\image-20241219200827350.png) | ![image-20241219200830207](README.assets\image-20241219200830207.png) |
+| ![image-20241219200827350](README.assets/image-20241219200827350.png) | ![image-20241219200830207](README.assets/image-20241219200830207.png) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 
 #### 碰撞与冲击波
@@ -297,7 +297,7 @@ if hand_have == 1 or hand_have == 3:
 
 尝试了很多方法，最终采用的是模拟真实的“**冲击波**”。
 
-<img src="README.assets\{263C867C-B8B6-4493-B783-4625F86A3CCC}.png" alt="{263C867C-B8B6-4493-B783-4625F86A3CCC}" style="zoom:25%;" />
+<img src="README.assets/{263C867C-B8B6-4493-B783-4625F86A3CCC}.png" alt="{263C867C-B8B6-4493-B783-4625F86A3CCC}" style="zoom:25%;" />
 
 在大剑模型的下方产生一个球型的碰撞体积，当产生冲击波时给其一个向上的线速度，撞飞轨迹上的实体。
 
@@ -311,7 +311,7 @@ if hand_have == 1 or hand_have == 3:
 
 |                           水滴粒子                           |                           尘土粒子                           |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="README.assets\{E57C2419-3C7E-4A04-BFA9-8E5DE3240A02}.png" alt="{E57C2419-3C7E-4A04-BFA9-8E5DE3240A02}" style="zoom:33%;" /> | <img src="README.assets\{97778AF5-3206-4B1E-99D2-F009871EE69A}.png" alt="{97778AF5-3206-4B1E-99D2-F009871EE69A}" style="zoom:50%;" /> |
+| <img src="README.assets/{E57C2419-3C7E-4A04-BFA9-8E5DE3240A02}.png" alt="{E57C2419-3C7E-4A04-BFA9-8E5DE3240A02}" style="zoom:33%;" /> | <img src="README.assets/{97778AF5-3206-4B1E-99D2-F009871EE69A}.png" alt="{97778AF5-3206-4B1E-99D2-F009871EE69A}" style="zoom:50%;" /> |
 
 > 除了贝塞尔曲线，参数的编写过程这里就不赘述了。
 
@@ -321,7 +321,7 @@ if hand_have == 1 or hand_have == 3:
 
 比如在粒子着色器中，希望粒子是一个“**先变大后变小**”的状态，设置其对应的贝塞尔曲线：
 
-<img src="README.assets\{5E40CDF0-E9F7-493F-AE97-FE89A1A074FC}.png" alt="{5E40CDF0-E9F7-493F-AE97-FE89A1A074FC}" style="zoom:50%;" />
+<img src="README.assets/{5E40CDF0-E9F7-493F-AE97-FE89A1A074FC}.png" alt="{5E40CDF0-E9F7-493F-AE97-FE89A1A074FC}" style="zoom:50%;" />
 
 粒子会在开始以**0.7**的大小出现，然后逐渐变成**1**，最后衰减到一个较低的值。
 
@@ -340,7 +340,7 @@ if hand_have == 1 or hand_have == 3:
 
 |                            预放置                            |                            预删除                            |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![image-20241219210144671](README.assets\image-20241219210144671.png) | ![{42A1E9F6-D2BF-4810-803C-A9FE21F6FF35}](README.assets\{42A1E9F6-D2BF-4810-803C-A9FE21F6FF35}.png) |
+| ![image-20241219210144671](README.assets/image-20241219210144671.png) | ![{42A1E9F6-D2BF-4810-803C-A9FE21F6FF35}](README.assets/{42A1E9F6-D2BF-4810-803C-A9FE21F6FF35}.png) |
 
 #### 放置
 
@@ -405,11 +405,11 @@ func pre_replace():									# 准备移除
 
 有关粉色的拆除框，一开始的实现中会有一个问题：
 
-<img src="README.assets\{E997AADA-753F-45C2-B3DC-567598BE9040}.png" alt="{E997AADA-753F-45C2-B3DC-567598BE9040}" style="zoom:33%;" />
+<img src="README.assets/{E997AADA-753F-45C2-B3DC-567598BE9040}.png" alt="{E997AADA-753F-45C2-B3DC-567598BE9040}" style="zoom:33%;" />
 
 粉色方块是“**虚拟的方块**”，我们希望它能出现在镜头的最前面，这里就要用到**Z缓冲的深度排序**了。将粉色方块的排序偏移**向前移动**一个单位，就能让其突破一些遮挡的束缚：
 
-<img src="README.assets\{63A7E9BA-05DD-4745-B556-CE45A0C4F9D9}.png" alt="{63A7E9BA-05DD-4745-B556-CE45A0C4F9D9}" style="zoom:33%;" />
+<img src="README.assets/{63A7E9BA-05DD-4745-B556-CE45A0C4F9D9}.png" alt="{63A7E9BA-05DD-4745-B556-CE45A0C4F9D9}" style="zoom:33%;" />
 
 ### 休闲模式
 
@@ -432,7 +432,7 @@ func pre_replace():									# 准备移除
 
 |                          普通小怪物                          |                          加速小怪物                          |                           巨型怪物                           |                           幻影怪物                           |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| ![{2414E950-CF82-484E-B2FB-C3E35F3B7F16}](README.assets\{2414E950-CF82-484E-B2FB-C3E35F3B7F16}.png) | ![{C0C1F4F5-E83B-475B-B0D3-ADABBC405243}](README.assets\{C0C1F4F5-E83B-475B-B0D3-ADABBC405243}.png) | ![{E9DA31C3-4353-4E69-98A0-8B1961C762AA}](README.assets\{E9DA31C3-4353-4E69-98A0-8B1961C762AA}.png) | ![{8FB8E96B-8E6F-48CA-8C19-D9776188F858}](README.assets\{8FB8E96B-8E6F-48CA-8C19-D9776188F858}.png) |
+| ![{2414E950-CF82-484E-B2FB-C3E35F3B7F16}](README.assets/{2414E950-CF82-484E-B2FB-C3E35F3B7F16}.png) | ![{C0C1F4F5-E83B-475B-B0D3-ADABBC405243}](README.assets/{C0C1F4F5-E83B-475B-B0D3-ADABBC405243}.png) | ![{E9DA31C3-4353-4E69-98A0-8B1961C762AA}](README.assets/{E9DA31C3-4353-4E69-98A0-8B1961C762AA}.png) | ![{8FB8E96B-8E6F-48CA-8C19-D9776188F858}](README.assets/{8FB8E96B-8E6F-48CA-8C19-D9776188F858}.png) |
 |                          无特殊技能                          |                         移动速度更快                         |                     体型更大、不易被击飞                     |                  无视剑气攻击、无视方块阻挡                  |
 
 没错，这里设置了两种方式让玩家反击怪物：
@@ -452,7 +452,7 @@ func pre_replace():									# 准备移除
 
 手电是使用了聚光灯的效果，从原点进行一个圆锥型的照明：
 
-<img src="README.assets\{35AD2B4D-993C-4B70-A485-51453C85A46B}.png" alt="{35AD2B4D-993C-4B70-A485-51453C85A46B}" style="zoom:25%;" />
+<img src="README.assets/{35AD2B4D-993C-4B70-A485-51453C85A46B}.png" alt="{35AD2B4D-993C-4B70-A485-51453C85A46B}" style="zoom:25%;" />
 
 #### 跳脸特效
 
@@ -460,7 +460,7 @@ func pre_replace():									# 准备移除
 
 当玩家被抓到时，伴随一阵音效，周围会出现四个大怪兽将你团团围住！
 
-<img src="README.assets\{183D089A-C463-4BD6-9567-03C1381DBD80}.png" alt="{183D089A-C463-4BD6-9567-03C1381DBD80}" style="zoom:25%;" />
+<img src="README.assets/{183D089A-C463-4BD6-9567-03C1381DBD80}.png" alt="{183D089A-C463-4BD6-9567-03C1381DBD80}" style="zoom:25%;" />
 
 ### 音乐与立体音效
 
