@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://fs3kuavmmy8p"]
+
+[ext_resource type="ArrayMesh" uid="uid://ce7iimirnihex" path="res://资源场景/3D资源/木星/木星1.res" id="1_5hocb"]
+[ext_resource type="Script" path="res://资源场景/3D资源/木星/木星1.gd" id="1_rxb17"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sfqjh"]
+
+[node name="木星1" type="RigidBody3D"]
+script = ExtResource("1_rxb17")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 0, 0)
+mesh = ExtResource("1_5hocb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 0, 0)
+shape = SubResource("SphereShape3D_sfqjh")

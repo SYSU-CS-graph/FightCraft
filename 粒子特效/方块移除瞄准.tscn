@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgjglg37hjj12"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebcq4"]
+transparency = 4
+albedo_color = Color(1, 0.588235, 1, 0.607843)
+emission = Color(0.815686, 0.290196, 0.878431, 1)
+emission_energy_multiplier = 2.0
+
+[node name="方块移除瞄准" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+sorting_offset = 1.0
+material_override = SubResource("StandardMaterial3D_ebcq4")
+size = Vector3(1.1, 1.1, 1.1)

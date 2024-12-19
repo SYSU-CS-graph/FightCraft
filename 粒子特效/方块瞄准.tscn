@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuu5rfgy14oc2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ct6l5"]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+albedo_color = Color(2.69532e-06, 0.9424, 0.880261, 0.501961)
+emission = Color(0.645674, 0.925501, 0.97943, 1)
+emission_energy_multiplier = 2.0
+emission_operator = 1
+
+[node name="方块瞄准" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_ct6l5")

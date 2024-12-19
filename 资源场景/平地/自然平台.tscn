@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://b350658m5hlxu"]
+
+[ext_resource type="Script" path="res://资源场景/平地/自然平台.gd" id="1_ksb5p"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ou4rj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_agykn"]
+size = Vector3(151, 1, 151)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w4w8x"]
+size = Vector3(103, 9, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0l2dv"]
+size = Vector3(103, 9, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ln47r"]
+size = Vector3(1, 9, 103)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pg833"]
+size = Vector3(1, 9, 103)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hrd72"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qnjbi"]
+size = Vector3(60, 1, 55)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h10l7"]
+size = Vector3(55, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c42cc"]
+size = Vector3(41, 1, 101)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_briyq"]
+size = Vector3(60, 1, 41)
+
+[node name="自然平台" type="Node3D"]
+script = ExtResource("1_ksb5p")
+
+[node name="头顶屏障" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_ou4rj")
+
+[node name="边界top" type="CollisionShape3D" parent="头顶屏障"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.35, 0)
+shape = SubResource("BoxShape3D_agykn")
+disabled = true
+
+[node name="边界1" type="CollisionShape3D" parent="头顶屏障"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -51)
+shape = SubResource("BoxShape3D_w4w8x")
+disabled = true
+
+[node name="边界2" type="CollisionShape3D" parent="头顶屏障"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 51)
+shape = SubResource("BoxShape3D_0l2dv")
+disabled = true
+
+[node name="边界3" type="CollisionShape3D" parent="头顶屏障"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 3, 0)
+shape = SubResource("BoxShape3D_ln47r")
+disabled = true
+
+[node name="边界4" type="CollisionShape3D" parent="头顶屏障"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 3, 0)
+shape = SubResource("BoxShape3D_pg833")
+disabled = true
+
+[node name="平台实体碰撞" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_ou4rj")
+
+[node name="池塘体积" type="CollisionShape3D" parent="平台实体碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)
+shape = SubResource("BoxShape3D_hrd72")
+disabled = true
+
+[node name="碰撞体积1" type="CollisionShape3D" parent="平台实体碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 0, 23)
+shape = SubResource("BoxShape3D_qnjbi")
+
+[node name="碰撞体积2" type="CollisionShape3D" parent="平台实体碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, -7)
+shape = SubResource("BoxShape3D_h10l7")
+
+[node name="碰撞体积3" type="CollisionShape3D" parent="平台实体碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)
+shape = SubResource("BoxShape3D_c42cc")
+
+[node name="碰撞体积4" type="CollisionShape3D" parent="平台实体碰撞"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 0, -30)
+shape = SubResource("BoxShape3D_briyq")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://d01ua7rbtnnjd"]
+
+[ext_resource type="Texture2D" uid="uid://gktwxo13wfca" path="res://特效纹理/water.jpg" id="1_oumx7"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a0blp"]
+emission_shape = 1
+emission_sphere_radius = 2.0
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_n4r3v"]
+albedo_texture = ExtResource("1_oumx7")
+emission_enabled = true
+emission = Color(0.0619267, 0.0619267, 0.0619267, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_lvlkd"]
+material = SubResource("ORMMaterial3D_n4r3v")
+radius = 0.02
+height = 0.04
+
+[node name="水滴" type="GPUParticles3D"]
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_a0blp")
+draw_pass_1 = SubResource("SphereMesh_lvlkd")

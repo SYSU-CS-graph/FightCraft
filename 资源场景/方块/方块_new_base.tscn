@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0g4vpp0r0lkp"]
+
+[ext_resource type="Texture2D" uid="uid://cy0slsp7jlbtw" path="res://资源场景/方块纹理/1_top.png" id="1_2bjpl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_wfhks"]
+friction = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_seca6"]
+size = Vector3(1, 0.98, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nhohs"]
+albedo_texture = ExtResource("1_2bjpl")
+uv1_scale = Vector3(2.98, 1.48, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cahkh"]
+material = SubResource("StandardMaterial3D_nhohs")
+size = Vector3(1, 0.98, 1)
+
+[node name="方块" type="StaticBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_wfhks")
+
+[node name="碰撞体积" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_seca6")
+
+[node name="实体" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_cahkh")

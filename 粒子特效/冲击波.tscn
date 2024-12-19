@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://djp8mnpsgd5cd"]
+
+[ext_resource type="Script" path="res://粒子特效/冲击波.gd" id="1_8b3t6"]
+[ext_resource type="Texture2D" uid="uid://rbx23gv1kse1" path="res://特效纹理/冲击波.png" id="1_efkqk"]
+[ext_resource type="PackedScene" uid="uid://d01ua7rbtnnjd" path="res://粒子特效/水滴.tscn" id="3_ien3y"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hlor0"]
+height = 0.1
+radius = 1.82
+
+[node name="冲击波" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 0
+mass = 3.0
+gravity_scale = 0.01
+script = ExtResource("1_8b3t6")
+
+[node name="波1" type="Sprite3D" parent="."]
+transform = Transform3D(0.999848, 0, 0.0174524, 0, 1.1, 0, -0.0174524, 0, 0.999848, 0, 0, -0.05)
+texture = ExtResource("1_efkqk")
+region_enabled = true
+region_rect = Rect2(5, 5, 395, 395)
+
+[node name="波2" type="Sprite3D" parent="."]
+transform = Transform3D(0.999854, 0, -0.0170685, 0, 1.1, 0, 0.0170685, 0, 0.999854, 0, 0, 0.05)
+texture = ExtResource("1_efkqk")
+region_enabled = true
+region_rect = Rect2(5, 5, 395, 395)
+
+[node name="碰撞体积" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_hlor0")
+
+[node name="水滴" parent="." instance=ExtResource("3_ien3y")]
+amount = 80
+
+[node name="计时器" type="Timer" parent="."]
+one_shot = true

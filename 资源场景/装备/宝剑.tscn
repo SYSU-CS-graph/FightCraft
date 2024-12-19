@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddd86e23nxr63"]
+
+[ext_resource type="Texture2D" uid="uid://cunc7tumkxuwm" path="res://资源场景/装备/宝剑2.png" id="1_lkecu"]
+
+[node name="宝剑" type="Sprite3D"]
+transform = Transform3D(-0.08726, 0.179585, 0.15045, -0.233985, -0.0587963, -0.0655279, -0.0116877, -0.163684, 0.188603, -0.119169, 0.139034, -0.225504)
+texture = ExtResource("1_lkecu")
