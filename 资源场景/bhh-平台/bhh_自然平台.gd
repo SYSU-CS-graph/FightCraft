@@ -52,7 +52,7 @@ func _ready() -> void:
 	
 	
 	
-	
+	make_class(-20,50,26,6)
 	
 	#river_init()
 	# 随机生成点东西
@@ -69,6 +69,23 @@ var poor_x_star = 30;
 var poor_x_end = 55;
 var poor_z_star = 30;
 var poor_z_end = 94;
+
+
+#制作玻璃门
+func make_class(x_pos : int, z_pos: int, range: int, max_height:int):
+	var terrain_size = range  # 地形范围 x:30-55,z=30,y<=3
+	#var max_height # 最大高度
+	for height_temp in range(max_height):
+		var height = 10 - height_temp
+		for x_temp in range(terrain_size):
+				var x = x_temp + x_pos
+				var z = z_pos - height_temp
+				var block = preload("res://资源场景/bhh-方块/玻璃.tscn").instantiate()
+				add_child(block)
+				block.position = Vector3(x , height, z)
+				
+
+
 
 func layer_init():									# 初始化平台
 	var max_height = 3  # 最大高度

@@ -1,20 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://btrg7ttai34jq"]
+[gd_scene load_steps=19 format=3 uid="uid://btrg7ttai34jq"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_8gp42"]
-[ext_resource type="Script" path="res://character.gd" id="2_okg3y"]
-[ext_resource type="Script" path="res://camera_3d.gd" id="3_8ke1v"]
-[ext_resource type="PackedScene" uid="uid://dn6d1recfcy7l" path="res://资源场景/方块/方块_no_collision.tscn" id="4_t2ncw"]
-[ext_resource type="Texture2D" uid="uid://cunc7tumkxuwm" path="res://资源场景/装备/宝剑2.png" id="5_kwdm2"]
-[ext_resource type="PackedScene" uid="uid://gulwh502wdaf" path="res://全局设置/global.tscn" id="6_1tbwl"]
+[ext_resource type="Script" path="res://资源场景/character_lzc.gd" id="5_uj7m4"]
+[ext_resource type="Script" path="res://camera_3d.gd" id="6_4tdjw"]
+[ext_resource type="PackedScene" uid="uid://bbaun7cj2gh73" path="res://资源场景/小女孩/mygirlwithbone3.glb" id="7_jottf"]
 [ext_resource type="Texture2D" uid="uid://b67a4e66obqlx" path="res://资源场景/bighaohao水/Shaders/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="7_ojgoc"]
 [ext_resource type="Texture2D" uid="uid://b7v57smsxojg0" path="res://资源场景/方块纹理/256256/bcc8515c8a8b756222b972f27b5541d(2).png" id="8_btuer"]
+[ext_resource type="PackedScene" uid="uid://dn6d1recfcy7l" path="res://资源场景/方块/方块_no_collision.tscn" id="8_ctrcs"]
 [ext_resource type="Script" path="res://资源场景/bhh-平台/bhh_自然平台.gd" id="8_ufp6v"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_omxmr"]
-friction = 0.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_yel8f"]
-size = Vector3(0.8, 1.8, 0.8)
+[ext_resource type="Texture2D" uid="uid://cunc7tumkxuwm" path="res://资源场景/装备/宝剑2.png" id="9_1auqn"]
+[ext_resource type="PackedScene" uid="uid://gulwh502wdaf" path="res://全局设置/global.tscn" id="10_ce5j5"]
+[ext_resource type="Script" path="res://camera_3d_2.gd" id="11_k3by2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kqhak"]
 panorama = ExtResource("7_ojgoc")
@@ -36,43 +32,18 @@ albedo_texture = ExtResource("8_btuer")
 [sub_resource type="SphereMesh" id="SphereMesh_3qs2o"]
 material = SubResource("StandardMaterial3D_sndas")
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_omxmr"]
+friction = 0.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rva1u"]
+radius = 0.3
+
 [node name="总场景" type="Node"]
 script = ExtResource("1_8gp42")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.590377, 0.790487, 0.163051, -0.752302, 0.465746, 0.465963, 0.292397, -0.397758, 0.869651, 0, 6.02359, 0)
 shadow_enabled = true
-
-[node name="Character" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-physics_material_override = SubResource("PhysicsMaterial_omxmr")
-gravity_scale = 0.0
-script = ExtResource("2_okg3y")
-
-[node name="Camera3D" type="Camera3D" parent="Character"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-current = true
-far = 500.0
-script = ExtResource("3_8ke1v")
-
-[node name="手持" type="Node3D" parent="Character/Camera3D"]
-transform = Transform3D(0.549901, 0.163264, 0.819117, 0.271212, 0.892663, -0.359997, -0.78997, 0.420117, 0.446597, 0.799, -0.435, -0.79)
-
-[node name="方块" parent="Character/Camera3D/手持" instance=ExtResource("4_t2ncw")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-visible = false
-
-[node name="宝剑" type="Sprite3D" parent="Character/Camera3D/手持"]
-transform = Transform3D(-0.08726, 0.179585, 0.15045, -0.233985, -0.0587963, -0.0655279, -0.0116877, -0.163684, 0.188603, -0.119169, 0.139034, -0.225504)
-texture = ExtResource("5_kwdm2")
-
-[node name="碰撞体积1" type="CollisionShape3D" parent="Character"]
-shape = SubResource("BoxShape3D_yel8f")
-
-[node name="Global" parent="Character" instance=ExtResource("6_1tbwl")]
 
 [node name="Debug参数" type="Label" parent="."]
 offset_left = 21.0
@@ -109,3 +80,47 @@ mesh = SubResource("SphereMesh_3qs2o")
 
 [node name="bhh-自然平台" type="Node3D" parent="."]
 script = ExtResource("8_ufp6v")
+
+[node name="Character" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_omxmr")
+gravity_scale = 0.0
+script = ExtResource("5_uj7m4")
+
+[node name="Camera3D" type="Camera3D" parent="Character"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19369, -0.277251)
+current = true
+far = 500.0
+script = ExtResource("6_4tdjw")
+
+[node name="littlegirl" type="Node3D" parent="Character/Camera3D"]
+transform = Transform3D(-1, 0, 1.22465e-16, 0, 1, 0, -1.22465e-16, 0, -1, 0, -1.19369, 0.277251)
+
+[node name="girl" parent="Character/Camera3D/littlegirl" instance=ExtResource("7_jottf")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="手持" type="Node3D" parent="Character/Camera3D/littlegirl"]
+transform = Transform3D(-0.549901, -0.163264, -0.819117, 0.271212, 0.892663, -0.359997, 0.78997, -0.420117, -0.446597, -0.799, 0.758686, 1.06725)
+
+[node name="方块" parent="Character/Camera3D/littlegirl/手持" instance=ExtResource("8_ctrcs")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
+
+[node name="宝剑" type="Sprite3D" parent="Character/Camera3D/littlegirl/手持"]
+transform = Transform3D(-0.17514, 0.1291, 0.123123, -0.126282, -0.211589, 0.0422248, 0.12601, -0.0326118, 0.213443, -0.689299, 0.371992, 0.0196082)
+texture = ExtResource("9_1auqn")
+
+[node name="碰撞体积1" type="CollisionShape3D" parent="Character"]
+transform = Transform3D(0.999848, 0, 0.0174524, 0, 1, 0, -0.0174524, 0, 0.999848, 0, 1, 0)
+shape = SubResource("CylinderShape3D_rva1u")
+
+[node name="Global" parent="Character" instance=ExtResource("10_ce5j5")]
+
+[node name="third" type="Node3D" parent="Character"]
+
+[node name="Camera3D2" type="Camera3D" parent="Character/third"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0365, 1.6389, 1.74751)
+script = ExtResource("11_k3by2")

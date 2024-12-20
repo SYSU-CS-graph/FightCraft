@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://cjunk81wnfvgt"]
+
+[ext_resource type="Script" path="res://character.gd" id="1_7dpo0"]
+[ext_resource type="Script" path="res://camera_3d.gd" id="2_53tqg"]
+[ext_resource type="PackedScene" uid="uid://bbaun7cj2gh73" path="res://资源场景/小女孩/mygirlwithbone3.glb" id="3_6xt6k"]
+[ext_resource type="PackedScene" uid="uid://dn6d1recfcy7l" path="res://资源场景/方块/方块_no_collision.tscn" id="4_pveem"]
+[ext_resource type="Texture2D" uid="uid://cunc7tumkxuwm" path="res://资源场景/装备/宝剑2.png" id="5_4yhhq"]
+[ext_resource type="PackedScene" uid="uid://gulwh502wdaf" path="res://全局设置/global.tscn" id="6_mo2fe"]
+[ext_resource type="Script" path="res://camera_3d_2.gd" id="7_crvma"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_omxmr"]
+friction = 0.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rva1u"]
+radius = 0.3
+
+[node name="Character" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_omxmr")
+gravity_scale = 0.0
+script = ExtResource("1_7dpo0")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19369, -0.277251)
+current = true
+far = 500.0
+script = ExtResource("2_53tqg")
+
+[node name="littlegirl" type="Node3D" parent="Camera3D"]
+transform = Transform3D(-1, 0, 1.22465e-16, 0, 1, 0, -1.22465e-16, 0, -1, 0, -1.19369, 0.277251)
+
+[node name="girl" parent="Camera3D/littlegirl" instance=ExtResource("3_6xt6k")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="手持" type="Node3D" parent="Camera3D/littlegirl"]
+transform = Transform3D(-0.549901, -0.163264, -0.819117, 0.271212, 0.892663, -0.359997, 0.78997, -0.420117, -0.446597, -0.799, 0.758686, 1.06725)
+
+[node name="方块" parent="Camera3D/littlegirl/手持" instance=ExtResource("4_pveem")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+visible = false
+
+[node name="宝剑" type="Sprite3D" parent="Camera3D/littlegirl/手持"]
+transform = Transform3D(-0.17514, 0.1291, 0.123123, -0.126282, -0.211589, 0.0422248, 0.12601, -0.0326118, 0.213443, -0.689299, 0.371992, 0.0196082)
+texture = ExtResource("5_4yhhq")
+
+[node name="碰撞体积1" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999848, 0, 0.0174524, 0, 1, 0, -0.0174524, 0, 0.999848, 0, 1, 0)
+shape = SubResource("CylinderShape3D_rva1u")
+
+[node name="Global" parent="." instance=ExtResource("6_mo2fe")]
+
+[node name="third" type="Node3D" parent="."]
+
+[node name="Camera3D2" type="Camera3D" parent="third"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0365, 1.6389, 1.74751)
+script = ExtResource("7_crvma")
