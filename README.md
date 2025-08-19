@@ -2,11 +2,10 @@
 
 ![banner](./README.assets/banner.png)
 
-**制作者：洪博政，陈镜霖，刘浩，林子超**
+| 成员     | <a href="https://github.com/LuvReadunion"><img src="https://avatars.githubusercontent.com/u/150005578?v=4" width="100" style="border-radius:50%;" /></a> | <a href="https://github.com/CJL96"><img src="https://avatars.githubusercontent.com/u/118027935?v=4" width="100" style="border-radius:50%;" /></a> | <a href="https://github.com/BruoYe-Nountum"><img src="https://avatars.githubusercontent.com/u/132318127?v=4" width="100" style="border-radius:50%;" /></a> | <a href="https://github.com/hyperionzero-im"><img src="https://avatars.githubusercontent.com/u/190507585?v=4" width="100" style="border-radius:50%;" /></a> |
+| -------- | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| **贡献** |                             60h                              |                             40h                              |                             25h                              |                             25h                              |
 
-| **成员** | **洪博政** | **陈镜霖** | **刘浩** | **林子超** |
-| :------- | :--------- | :--------- | :------- | ---------- |
-| **贡献** | **60h**    | **40h**    | **25h**  | **25h**    |
 
 FightCraft是使用[Godot游戏引擎](https://godotengine.org/)制作的大型开放世界冒险游戏。游戏部分场景取材于[Minecraft](https://www.minecraft.net/zh-hans) ，但提供了独具特色的场景和玩法。
 
